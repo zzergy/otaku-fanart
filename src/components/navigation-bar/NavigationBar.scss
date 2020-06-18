@@ -1,10 +1,12 @@
+$default-background-color: #06070D;
+$default-items-color: lightgray;
+
 .navigation-bar-container {
-  /*border: solid rebeccapurple;*/
-  height: 45px;
+  height: 55px;
   display: flex;
   justify-content: space-between;
-  background-color: #06070D;
-  color: lightgray;
+  background-color: $default-background-color;
+  color: $default-items-color;
 
   //Left side
   #nav-left {
@@ -12,69 +14,87 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    //border: solid rebeccapurple;
 
     #search-bar {
-      border: solid 1px lightgray;
-      background-color: #06070D;
-      color: lightgray;
+      border: none;
+      background-color: $default-background-color;
+      color: $default-items-color;
+    }
+
+    #search-button {
+      background-image: url("./navigation-bar-images/search.svg");
+      background-size: contain;
+      background-color: $default-background-color;
+      border: none;
+      width: 20px;
+      height: 20px;
     }
 
     a {
+      font-size: 18px;
       height: 100%;
-      line-height: 45px;
+      line-height: 55px;
       //border: solid red;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
     }
 
-    $coolLine: solid 1px #464646;
+    $separation-line: solid 1px #464646;
 
     a:nth-child(2):before {
       content: '';
-      border-left: $coolLine;
+      border-left: $separation-line;
       padding-left: 20px;
     }
 
     a:nth-child(3):after {
       content: '';
-      border-right: $coolLine;
+      border-right: $separation-line;
       padding-right: 20px;
     }
+
+    a:hover {
+      color: #d3a7ff;
+      transition-duration: 0.5s;
+    }
+
+
   }
 
   //Right side
   #nav-right {
-    width: 160px;
+    width: 200px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     /*border: solid rebeccapurple;*/
 
     #user-icon {
-      width: 35px;
-      height: 35px;
+      width: 45px;
+      height: 45px;
     }
 
-    button {
+    #sign-in-button {
       font-size: 12px;
       font-weight: bold;
-      color: lightgray;
+      color: $default-items-color;
       border: none;
       border-radius: 3px;
       background-color: #6135BF;
-      padding: 7px;
-      /*margin-right: 10px;*/
+      padding: 10px 12px;
+    }
+
+    #notification-bell-icon {
+      width: 30px;
+      height: 30px;
     }
   }
 }
 
-#notification-bell-icon, #search-icon {
-  width: 23px;
-  height: 23px;
-}
+
 
 span {
   font-weight: bold;
-  font-size: larger;
+  //font-size: larger;
+  font-size: 23px;
 }
