@@ -11,21 +11,21 @@ export interface NavigationBarState {
 class NavigationBar extends React.Component <{}, NavigationBarState>{
     render() {
         return (
-            <nav className="navigation-bar-container">
-                <div id="nav-left">
+            <div className="nav">
+                <div className="nav-left">
                     <span>Otaku-Fanart</span>
                     <a>Home</a>
                     <a>About</a>
-                    <input id="search-bar" type="search" placeholder="Search.."/>
-                    <button type="submit" id="search-button"/>
+                    <input className="search-bar" type="search" placeholder="Search.."/>
+                    <button type="submit" className="search-button"/>
                 </div>
 
-                <div id="nav-right">
-                    <a><img id="user-icon" src={userIcon} alt="user icon"/></a>
-                    <a><img id="notification-bell-icon" src={notificationBellIcon} alt="notification bell"/></a>
-                    <button id="sign-in-button">SIGN IN</button>
+                <div className="nav-right">
+                    <a><img className="user-icon" src={userIcon} alt="user icon"/></a>
+                    <a><img className="notification-bell-icon" src={notificationBellIcon} alt="notification bell"/></a>
+                    <button className="sign-in-button">SIGN IN</button>
                 </div>
-            </nav>
+            </div>
         );
     }
 }

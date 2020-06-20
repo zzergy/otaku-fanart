@@ -1,27 +1,28 @@
 $default-background-color: #06070D;
 $default-items-color: lightgray;
 
-.navigation-bar-container {
+.nav {
   height: 55px;
   display: flex;
   justify-content: space-between;
   background-color: $default-background-color;
   color: $default-items-color;
+  //border: solid 1px blue;
 
   //Left side
-  #nav-left {
+  .nav-left {
     width: 530px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    #search-bar {
+    .search-bar {
       border: none;
       background-color: $default-background-color;
       color: $default-items-color;
     }
 
-    #search-button {
+    .search-button {
       background-image: url("./navigation-bar-images/search.svg");
       background-size: contain;
       background-color: $default-background-color;
@@ -62,19 +63,19 @@ $default-items-color: lightgray;
   }
 
   //Right side
-  #nav-right {
+  .nav-right {
     width: 200px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     /*border: solid rebeccapurple;*/
 
-    #user-icon {
+    .user-icon {
       width: 45px;
       height: 45px;
     }
 
-    #sign-in-button {
+    .sign-in-button {
       font-size: 12px;
       font-weight: bold;
       color: $default-items-color;
@@ -84,7 +85,7 @@ $default-items-color: lightgray;
       padding: 10px 12px;
     }
 
-    #notification-bell-icon {
+    .notification-bell-icon {
       width: 30px;
       height: 30px;
     }
