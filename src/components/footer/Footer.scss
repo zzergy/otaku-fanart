@@ -1,0 +1,23 @@
+footer {
+  height: 100px;
+  //border: solid lightblue 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+
+
+  span {
+    font-size: 15px;
+    margin-right: 40px;
+  }
+
+  span, a {
+    color: #6135BF;
+  }
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
