@@ -1,0 +1,20 @@
+nav {
+  //border: solid 1px red;
+  display: flex;
+  height: 45px;
+  background: linear-gradient(to bottom, rgb(31, 35, 50) 0%, rgba(25, 27, 37, 1) 50%);
+  align-items: center;
+
+  a {
+    color: lightgray;
+    font-size: 18px;
+    margin-left: 30px;
+    margin-right: 30px;
+    line-height: 42px;
+  }
+
+  a:hover {
+    border-bottom: 3px solid #6135BF;
+    margin-bottom: -3px;
+  }
+}
