@@ -1,0 +1,54 @@
+// -------------- Image hover --------------
+.column > section {
+  overflow: hidden;
+}
+
+.image-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b2037;
+  //background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(20, 24, 41) 100%);
+  color: whitesmoke;
+  font-size: 20px;
+  width: 100%;
+  height: 70px;
+  opacity: 0;
+  transition-duration: 0.5s;
+  position: relative;
+  margin-top: -100px;
+  transform: translateY(100%);
+
+  .like-button {
+    border: none;
+    background-color: #1b2037;
+    background-image: url("/icons/heart-empty.png"); //not wrong!!!
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+    width: 25px;
+    height: 25px;
+    margin-right: 25px;
+  }
+
+  p {
+    //border: solid 1px crimson;
+    width: 220px;
+    margin-left: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+  }
+}
+
+.column > section:hover {
+  .image-info-container {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transform: translateY(0);
+  }
+}
+
+.column > section {
+
+}
