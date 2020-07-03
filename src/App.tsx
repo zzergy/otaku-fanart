@@ -1,18 +1,30 @@
 import React from 'react';
+import "./normalize.css";
 import './App.css';
-import HomePage from "./components/HomePage/HomePage";
-import BrowseImagesPage from "./components/BrowseImages-Page/BrowseImagesPage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import Footer from "./components/Footer/Footer";
+import HomePage from "./components/HomePage/HomePage";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import BrowseImagesPage from "./components/BrowseImagesPage/BrowseImagesPage";
+import Profile from "./components/ProfilePage/Profile";
+import Register from "./components/LoginAndRegisterPage/Register";
+import Login from "./components/LoginAndRegisterPage/Login";
 
 function App() {
     return (
-        <body>
-        <NavigationBar/>
-        {/*<HomePage/>*/}
-        <BrowseImagesPage/>
-        <Footer/>
-        </body>
+        <BrowserRouter>
+            <NavigationBar/>
+            <Switch>
+                <Route exact path="/" component={HomePage}/>
+
+                <Route path="/about" component={BrowseImagesPage}/>
+
+                <Route path="/register" component={Register}/>
+                <Route path="/login" component={Login}/>
+
+
+                <Route path="/profile" component={Profile}/>
+            </Switch>
+        </BrowserRouter>
     );
 }
 
