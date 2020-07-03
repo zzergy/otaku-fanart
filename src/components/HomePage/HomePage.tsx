@@ -7,7 +7,6 @@ import Footer from "../Footer/Footer";
 function HomePage() {
     return (
         <div>
-            <NavigationBar/>
             <FilterNavigationBar/>
             <Main/>
             <Footer/>
