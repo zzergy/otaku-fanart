@@ -32,12 +32,16 @@ $default-items-color: lightgray;
     }
 
     a {
+      color: whitesmoke;
+      outline: none;
+      text-decoration: none;
       font-size: 18px;
       height: 100%;
       line-height: 55px;
       //border: solid red;
       padding-left: 5px;
       padding-right: 5px;
+      transition-duration: 0.5s;
     }
 
     $separation-line: solid 1px #464646;
@@ -79,17 +83,20 @@ $default-items-color: lightgray;
     }
 
     .sign-in-button {
-      font-size: 12px;
+      outline: none;
+      text-decoration: none;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
       font-weight: bold;
       color: $default-items-color;
-      background-color: #06070D;
+      background-color: transparent;
       border: 1px solid #6135BF;
       border-radius: 3px;
       width: 80px;
       height: 30px;
       margin-right: 15px;
       transition-duration: 0.5s;
-
     }
 
     .sign-in-button:hover {
@@ -104,7 +111,6 @@ $default-items-color: lightgray;
     }
   }
 }
-
 
 
 span {
