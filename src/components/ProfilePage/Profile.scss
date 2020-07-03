@@ -1,0 +1,85 @@
+
+.banner-container {
+  height: 400px;
+  background-image: url("cover-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(198, 168, 255, 0.63);
+  padding-top: 40px;
+  background: linear-gradient(0deg, rgba(6, 7, 13, 0) 0%, rgba(97, 53, 191, 0.09) 100%);
+
+  .profile-info-container {
+    display: flex;
+    width: 65%;
+    padding: 10px;
+
+    //profile picture
+    > img {
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      margin-right: 5%;
+    }
+
+    .user-info-container {
+      display: flex;
+      flex-direction: column;
+
+      > h1, h2, h3 {
+        line-height: 5px;
+      }
+
+
+      .edit-profile-button {
+        align-self: flex-end;
+        background-color: transparent;
+        outline: none;
+        font-size: 15px;
+        color: rgba(198, 168, 255, 0.63);
+        border: 1px solid #6135BF;
+        border-radius: 3px;
+        width: 100px;
+        height: 30px;
+        transition-duration: 0.5s;
+      }
+
+      .edit-profile-button:hover {
+        cursor: pointer;
+        background-color: #6135BF;
+        color: whitesmoke;
+      }
+    }
+  }
+
+  .profile-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 40px;
+    //border: solid 1px green;
+
+    > .postLink {
+      text-decoration: none;
+      border: solid 1px #6135BF;
+      padding: 10px;
+      color: rgba(198, 168, 255, 0.63);
+      border-radius: 3px;
+
+      transition-duration: 0.5s;
+    }
+
+    .postLink:hover {
+      background-color: #6135BF;
+      transition-duration: 0.5s;
+      color: whitesmoke;
+    }
+  }
+}
