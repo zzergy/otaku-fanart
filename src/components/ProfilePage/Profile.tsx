@@ -45,25 +45,17 @@ function Profile() {
                         {/*</div>*/}
                     </div>
                 </div>
-
-
+                
                 <div className="profile-nav">
                     <Link to="/profile/yourPosts" className="postLink">Your Posts</Link>
                     <Link to="/profile/newPost" className="postLink">New Post</Link>
                     <Link to="/profile/likedPosts" className="postLink">Liked Posts</Link>
                 </div>
+
                 <Switch>
-                    <Route path="/profile/yourPosts">
-                        <YourPosts/>
-                    </Route>
-
-                    <Route path="/profile/likedPosts">
-                        <LikedPosts/>
-                    </Route>
-
-                    <Route path="/profile/newPost">
-                        <NewPost/>
-                    </Route>
+                    <Route path="/profile/yourPosts" component={YourPosts}/>
+                    <Route path="/profile/likedPosts" component={LikedPosts}/>
+                    <Route path="/profile/newPost" component={NewPost}/>
                 </Switch>
             </div>
             <Footer/>
