@@ -1,0 +1,52 @@
+.edit-profile-wrapper {
+  //border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  padding: 20px;
+
+  > textarea {
+    margin: 10px;
+    background-color: #271d38;
+    border: none;
+    resize: none;
+    color: rgba(198, 168, 255, 0.63);
+
+  }
+
+  > input[type="text"] {
+    line-height: 40px;
+    margin: 10px;
+    border: none;
+    border-bottom: 2px solid #9373ae;
+    background-color: transparent;
+    color: rgba(198, 168, 255, 0.63);
+    font-size: larger;
+    transition: 0.5s;
+  }
+
+  >  input[type="text"]:focus {
+    border-bottom: 2px solid #6135BF;
+    transition: 0.5s;
+  }
+
+  .save-button {
+    align-self: center;
+    font-size: 14px;
+    color: rgba(198, 168, 255, 0.63);
+    background-color: transparent;
+    border: 1px solid #6135BF;
+    border-radius: 3px;
+    width: 120px;
+    height: 35px;
+    margin-top: 40px;
+    transition-duration: 0.6s;
+  }
+
+  .save-button:hover {
+    color: whitesmoke;
+    background-color: #6135BF;
+    transition-duration: 0.5s;
+    cursor: pointer;
+  }
+}
