@@ -5,12 +5,14 @@ import Gallery from "../HomePage/main/Gallery/Gallery";
 import {Link, Route, Switch} from "react-router-dom";
 import NewPost from "./NewPost/NewPost";
 import userPicture from "./user-picture.png";
+import EditProfile from "./EditProfile/EditProfile";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 function Profile() {
-    const [isClicked, asd] = useState(false);
+    const [isClicked, setState] = useState(false);
 
     function handleClick() {
-        asd(true);
+        setState(true);
     }
 
 
@@ -22,30 +24,15 @@ function Profile() {
 
                 <div className="profile-info-container">
                     {/*user picture*/}
-                    <img src={userPicture} alt="user picture" width="200" height="200"/>
+                    <img src={userPicture} alt="user" width="200" height="200"/>
 
                     {/*user information*/}
                     <div className="user-info-container">
                         <button className="edit-profile-button" onClick={handleClick}>Edit Profile</button>
-                        <h2>Zergy</h2>
-                        <h3>Evolution Complete</h3>
-                        <h3>Bio:</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
-                        </p>
-                        {/*<div>*/}
-                        {/*    {isClicked ? (<h2>Clicked</h2>): (<h2>kill me im tired ass fuck</h2>)}*/}
-                        {/*</div>*/}
+                            {isClicked ? (<EditProfile/>) : (<ProfileInfo/>)}
                     </div>
                 </div>
-                
+
                 <div className="profile-nav">
                     <Link to="/profile/yourPosts" className="postLink">Your Posts</Link>
                     <Link to="/profile/newPost" className="postLink">New Post</Link>

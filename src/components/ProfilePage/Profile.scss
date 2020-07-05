@@ -32,29 +32,27 @@
       display: flex;
       flex-direction: column;
 
-      > h1, h2, h3 {
-        line-height: 5px;
-      }
 
 
-      .edit-profile-button {
-        align-self: flex-end;
-        background-color: transparent;
-        outline: none;
-        font-size: 15px;
-        color: rgba(198, 168, 255, 0.63);
-        border: 1px solid #6135BF;
-        border-radius: 3px;
-        width: 100px;
-        height: 30px;
-        transition-duration: 0.5s;
-      }
 
-      .edit-profile-button:hover {
-        cursor: pointer;
-        background-color: #6135BF;
-        color: whitesmoke;
-      }
+    }
+    .edit-profile-button {
+      align-self: flex-end;
+      background-color: transparent;
+      outline: none;
+      font-size: 15px;
+      color: rgba(198, 168, 255, 0.63);
+      border: 1px solid #6135BF;
+      border-radius: 3px;
+      width: 100px;
+      height: 30px;
+      transition-duration: 0.5s;
+    }
+
+    .edit-profile-button:hover {
+      cursor: pointer;
+      background-color: #6135BF;
+      color: whitesmoke;
     }
   }
 
