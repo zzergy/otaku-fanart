@@ -4,10 +4,10 @@ const UserModel = require("./users.model");
 const userController = {
     register: function (request, response) {
         //data
-        const userInformation = request.body;
+        const userData = request.body;
 
         //---------- USERNAME VALIDATIONS ----------
-        if (!userInformation.username || userInformation.username === '' || userInformation.username.length < 5 || /[^0-9A-Za-z]/.test(userInformation.username)) {
+        if (!userData.username || userData.username === '' || userData.username.length < 5 || /[^0-9A-Za-z]/.test(userData.username)) {
             response.status(400).send({
                 error: 'Invalid username'
             });
@@ -15,14 +15,14 @@ const userController = {
         }
 
         //---------- PASSWORD VALIDATIONS ----------
-        if (!userInformation.password || userInformation.password.length < 6) {
+        if (!userData.password || userData.password.length < 6) {
             response.status(400).send({
                 error: 'Password must be at least 6 characters long'
             });
             return;
         }
 
-        if (/[^0-9A-Za-z]/.test(userInformation.password)) {
+        if (/[^0-9A-Za-z]/.test(userData.password)) {
             response.status(400).send({
                 error: "Password must contain only numbers and letters"
             });
@@ -30,10 +30,10 @@ const userController = {
         }
 
         //encrypting the password
-        userInformation.password = bcrypt.hashSync(userInformation.password, 10);
+        userData.password = bcrypt.hashSync(userData.password, 10);
 
         //Create User
-        UserModel.create({username: userInformation.username, password: userInformation.password}, (error, user) => {
+        UserModel.create(userData, (error, user) => {
             if (error) {
                 response.status(400).send({
                     error: "Registration unsuccessful"
@@ -46,8 +46,6 @@ const userController = {
                 message: 'Registration successful'
             });
         });
-
-
     }
 };
 
