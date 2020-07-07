@@ -23,10 +23,11 @@ const PostsSchema = mongoose.Schema({
             comment: String
         }
     ],
-    likes: {
-        type: Number,
-        default: 0
-    }
+    likedBy: [
+        {
+            userId: String
+        }
+    ]
 
 });
 
