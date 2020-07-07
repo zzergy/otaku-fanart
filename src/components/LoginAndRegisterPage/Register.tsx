@@ -48,8 +48,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
         backgroundColor: "#6135BF"
     },
-    textField: {
-    }
+    textField: {}
 }));
 
 function Register() {
@@ -115,15 +114,15 @@ function Register() {
 
                         {/*Username*/}
                         <TextField className={classes.textField}
-                            id="username"
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            label="Username"
-                            name="username"
-                            autoComplete="username"
-                            onChange={handleChange}
+                                   id="username"
+                                   variant="outlined"
+                                   margin="normal"
+                                   required
+                                   fullWidth
+                                   label="Username"
+                                   name="username"
+                                   autoComplete="username"
+                                   onChange={handleChange}
                         />
 
                         {/*Password*/}
