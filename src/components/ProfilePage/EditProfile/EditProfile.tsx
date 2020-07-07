@@ -4,7 +4,6 @@ import "./EditProfile.scss";
 function EditProfile() {
     return (
         <form className="edit-profile-wrapper">
-            <input name="username" type="text" placeholder="Zergy"/>
             <input name="Motto" type="text" placeholder="Evolution Complete"/>
             <textarea cols={50} rows={7}
                       placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit,
