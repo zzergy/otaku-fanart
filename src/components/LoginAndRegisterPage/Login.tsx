@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {Link, Route} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,10 @@ import {makeStyles} from '@material-ui/core/styles';
 import background from "./register-thumbnail-pic.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
+import HomePage from "../HomePage/HomePage";
+import {UserInterface} from "../UserInterface";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -49,10 +53,62 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+export interface LoginResponse {
+    user: UserInterface
+}
 
-function Login() {
+interface LoginProps {
+    onLogin: (response: LoginResponse) => void
+}
+
+export function Login(props: LoginProps) {
     const classes = useStyles();
+    const history = useHistory();
 
+    const [currentState, setState] = useState({
+        username: "",
+        password: "",
+        errorMessage: "",
+    });
+
+    function handleChange(event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) {
+        const newState = {
+            ...currentState,
+            [event.target.name]: event.target.value
+        };
+
+        setState(newState)
+    }
+
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        axios.post<LoginResponse>("http://localhost:3001/api/users/login", {
+            username: currentState.username,
+            password: currentState.password
+        }).then(//if everything is oke
+             (response) => {
+                props.onLogin(response.data);
+
+                setState(
+                    {
+                        ...currentState,
+                        errorMessage: ''
+                    }
+                );
+                 history.push('/');
+            }
+        ).catch(//if there is something wrong
+            function (response) {
+                setState(
+                    {
+                        ...currentState,
+                        errorMessage: 'Wrong username or password'
+                    }
+                );
+            }
+        );
+    }
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -65,7 +121,7 @@ function Login() {
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                 <div className={classes.paper}>
                     {/*Login form*/}
-                    <form className={classes.form} noValidate>
+                    <form className={classes.form} noValidate onSubmit={handleSubmit}>
                         <Typography component="h1" variant="h5">Log In</Typography>
 
                         {/*Username*/}
@@ -77,7 +133,9 @@ function Login() {
                             label="Username"
                             name="username"
                             autoComplete="username"
-
+                            onChange={handleChange}
+                            error={!!currentState.errorMessage}
+                            helperText={currentState.errorMessage}
                         />
 
                         {/*Password*/}
@@ -90,6 +148,9 @@ function Login() {
                             label="Password"
                             type="password"
                             autoComplete="current-password"
+                            onChange={handleChange}
+                            error={!!currentState.errorMessage}
+                            helperText={currentState.errorMessage}
                         />
 
                         {/*Login*/}
@@ -120,4 +181,3 @@ function Login() {
     );
 }
 
-export default Login;

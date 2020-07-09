@@ -7,6 +7,9 @@ const UserSchema = new mongoose.Schema({
         minLength: 4,
         unique: [true, "Username already taken"]
     },
+    imageUrl: {
+      type: String,
+    },
     //hashed password
     password: {
         type: String,

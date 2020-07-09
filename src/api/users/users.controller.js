@@ -1,5 +1,6 @@
-const bcrypt = require("bcrypt");
+const hashPassword = require('../utils').hashPassword;
 const UserModel = require("./users.model");
+const passport = require('passport');
 
 const userController = {
     register: function (request, response) {
@@ -30,7 +31,7 @@ const userController = {
         }
 
         //encrypting the password
-        userData.password = bcrypt.hashSync(userData.password, 10);
+        userData.password = hashPassword(userData.password);
 
         //Create User
         UserModel.create(userData, (error, user) => {
@@ -46,6 +47,25 @@ const userController = {
                 message: 'Registration successful'
             });
         });
+    },
+    login: function (request, response) {
+        passport.authenticate('local', function (error, user) {
+            if (!user) {
+                response.status(400).send({
+                    login: false,
+                    error: `Can't login ${error}`
+                });
+                return;
+            }
+
+            //deletes the password so that it doesn't go to the frontend
+            delete user.password;
+
+            response.status(200).send({
+                login: true,
+                user
+            });
+        })(request, response);
     }
 };
 
