@@ -10,13 +10,13 @@ interface NavigationBarProps {
 }
 
 export interface NavigationBarState {
-    userIconUrl: string
+    imageUrl: string
     userName: string
 }
 
 class NavigationBar extends React.Component <NavigationBarProps, NavigationBarState> {
     getUserImage() {
-        if (this.props.user) {
+        if (this.props.user  && this.props.user.imageUrl) {
             return this.props.user.imageUrl;
         }
         return userIcon;
@@ -37,8 +37,8 @@ class NavigationBar extends React.Component <NavigationBarProps, NavigationBarSt
                     <Link to="/profile"><img className="user-icon" src={this.getUserImage()} alt="user icon"/></Link>
                     <a><img className="notification-bell-icon" src={notificationBellIcon} alt="notification bell"/></a>
 
+                    {/*Login and Log out button*/}
                     {this.props.user ? (<Link to="/logout" className="sign-in-button">LOG OUT</Link>) : (<Link to="/login" className="sign-in-button">LOG IN</Link>)}
-
                 </div>
             </div>
         );
