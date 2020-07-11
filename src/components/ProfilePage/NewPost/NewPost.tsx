@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
 import "./NewPost.scss";
-import axios from "axios";
-
+import {makeRequestToTheServer} from "../../utils";
+import { useHistory } from "react-router-dom";
 
 function NewPost() {
     const [currentState, setState] = useState(
@@ -26,18 +26,22 @@ function NewPost() {
         setState(newState);
     }
 
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const history = useHistory();
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         //convert keywords from string to array and remove unnecessary whitespace
         const keywordsToArray = currentState.keywords.split(/,\w*/g).filter(item => item);
 
-        const response = await axios.post("http://localhost:3001/api/post", {
+        makeRequestToTheServer('POST', 'http://localhost:3001/api/post', {
             title: currentState.title,
             keywords: keywordsToArray,
             imageUrl: currentState.imageUrl
+        }).then(() => {
+            //what i want to display after a successful publication
+            history.push('/profile/posts');
         });
-        console.log(response)
     }
 
     return (
