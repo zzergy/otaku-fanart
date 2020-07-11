@@ -1,18 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./normalize.css";
 import './App.css';
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import HomePage from "./components/HomePage/HomePage";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import BrowseImagesPage from "./components/BrowseImagesPage/BrowseImagesPage";
 import Profile from "./components/ProfilePage/Profile";
 import Register from "./components/LoginAndRegisterPage/Register";
 import {Login, LoginResponse} from "./components/LoginAndRegisterPage/Login";
 import {UserInterface} from './components/UserInterface';
+import axios from 'axios';
+import {makeRequestToTheServer} from "./components/utils";
 
 interface AppState {
     user: null | UserInterface
 }
+
 
 function App() {
     const [currentState, setState] = useState<AppState>({
@@ -23,6 +26,12 @@ function App() {
         setState({user: response.user});
     };
 
+    useEffect(() => {
+        makeRequestToTheServer('GET', 'http://localhost:3001/api/users/auth').then((response) => {
+            setState({user: response.user});
+        });
+    }, []);
+
     return (
         <BrowserRouter>
             <NavigationBar user={currentState.user}/>
@@ -31,9 +40,19 @@ function App() {
                 <Route path="/about" component={BrowseImagesPage}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/login">
-                    <Login onLogin={onLogin}/>
+                    {currentState.user ? (<Redirect to="/"/>) : (<Login onLogin={onLogin}/>)}
                 </Route>
-                <Route path="/profile" component={Profile}/>
+                <Route path="/logout">
+                    <button onClick={() => {
+                        axios.post('http://localhost:3000/api/post/', {}, {withCredentials: true}).then((res) => {
+                            debugger;
+                        });
+                    }}>Test
+                    </button>
+                </Route>
+                <Route path="/profile">
+                    <Profile user={currentState.user}/>
+                </Route>
             </Switch>
         </BrowserRouter>
     );
