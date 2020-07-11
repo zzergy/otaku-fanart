@@ -36,18 +36,18 @@ function Profile(props: ProfileProps) {
                     {/*user information*/}
                     <div className="user-info-container">
                         <button className="edit-profile-button" onClick={handleClick}>Edit Profile</button>
-                            {isClicked ? (<EditProfile user={props.user}/>) : (<ProfileInfo user={props.user}/>)}
+                        {isClicked ? (<EditProfile user={props.user}/>) : (<ProfileInfo user={props.user}/>)}
                     </div>
                 </div>
 
                 <div className="profile-nav">
-                    <Link to="/profile/yourPosts" className="postLink">Your Posts</Link>
+                    <Link to="/profile/posts" className="postLink">Your Posts</Link>
                     <Link to="/profile/newPost" className="postLink">New Post</Link>
                     <Link to="/profile/likedPosts" className="postLink">Liked Posts</Link>
                 </div>
 
                 <Switch>
-                    <Route path="/profile/yourPosts" component={YourPosts}/>
+                    <Route path="/profile/posts" component={Posts}/>
                     <Route path="/profile/likedPosts" component={LikedPosts}/>
                     <Route path="/profile/newPost" component={NewPost}/>
                 </Switch>
@@ -64,7 +64,7 @@ const styles = {
     margin: "10px",
 };
 
-function YourPosts() {
+function Posts() {
     return (
         // @ts-ignore
         <div style={styles}>
