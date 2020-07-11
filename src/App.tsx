@@ -9,7 +9,6 @@ import Profile from "./components/ProfilePage/Profile";
 import Register from "./components/LoginAndRegisterPage/Register";
 import {Login, LoginResponse} from "./components/LoginAndRegisterPage/Login";
 import {UserInterface} from './components/UserInterface';
-import axios from 'axios';
 import {makeRequestToTheServer} from "./components/utils";
 
 interface AppState {
@@ -27,28 +26,24 @@ function App() {
     };
 
     useEffect(() => {
-            makeRequestToTheServer('GET', 'http://localhost:3001/api/users/auth').then((response) => {
-                setState({user: response.user});
-            });
+        makeRequestToTheServer('GET', 'http://localhost:3001/api/users/auth').then((response) => {
+            setState({user: response.user});
+        });
     }, []);
+
+    function clearUser() {
+        setState({user: null});
+    }
 
     return (
         <BrowserRouter>
-            <NavigationBar user={currentState.user}/>
+            <NavigationBar user={currentState.user} clearUser={clearUser}/>
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route path="/about" component={BrowseImagesPage}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/login">
                     {currentState.user ? (<Redirect to="/"/>) : (<Login onLogin={onLogin}/>)}
-                </Route>
-                <Route path="/logout">
-                    <button onClick={() => {
-                        axios.post('http://localhost:3000/api/post/', {}, {withCredentials: true}).then((res) => {
-                            debugger;
-                        });
-                    }}>Test
-                    </button>
                 </Route>
                 <Route path="/profile">
                     {currentState.user ? (<Profile user={currentState.user}/>) : (<Redirect to="/register"/>)}

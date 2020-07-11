@@ -82,8 +82,19 @@ $default-items-color: lightgray;
       height: 42px;
       border-radius: 100%;
     }
-
-    .sign-in-button {
+    .logout-button {
+      font-size: 14px;
+      font-weight: bold;
+      color: $default-items-color;
+      background-color: transparent;
+      border: 1px solid #6135BF;
+      border-radius: 3px;
+      width: 85px;
+      height: 30px;
+      margin-right: 15px;
+      transition-duration: 0.5s;
+    }
+    .login-button {
       outline: none;
       text-decoration: none;
       text-align: center;
@@ -100,10 +111,12 @@ $default-items-color: lightgray;
       transition-duration: 0.5s;
     }
 
-    .sign-in-button:hover {
-      background-color: #6135BF;
-      transition-duration: 0.5s;
-      cursor: pointer;
+    .login-button, .logout-button {
+      &:hover {
+        background-color: #6135BF;
+        transition-duration: 0.5s;
+        cursor: pointer;
+      }
     }
 
     .notification-bell-icon {
