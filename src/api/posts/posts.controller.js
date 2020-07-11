@@ -59,8 +59,6 @@ const postController = {
             request.user.posts.push({postId: post._id});
             request.user.save();
         });
-
-
     }
 };
 
