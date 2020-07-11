@@ -20,11 +20,10 @@ const postController = {
             return;
         }
 
-        //convert to array of objects
+        //Convert to array of objects
         const mappedKeywords = postData.keywords.map(item => {
             return {keyword: item}
         });
-
         postData.keywords = mappedKeywords;
 
         //----------IMAGE VALIDATION ----------
@@ -34,6 +33,15 @@ const postController = {
             });
             return;
         }
+
+        //Check if user exists
+        if (!request.user) {
+            response.status(300);
+            return;
+        }
+
+        //The author id in db goes to the author id in the post data
+        postData.authorId = request.user._id;
 
         //Create Post
         PostModel.create(postData, (error, post)=> {
@@ -47,7 +55,12 @@ const postController = {
             response.send({
                 message: 'Post successful'
             });
-        })
+
+            request.user.posts.push({postId: post._id});
+            request.user.save();
+        });
+
+
     }
 };
 
