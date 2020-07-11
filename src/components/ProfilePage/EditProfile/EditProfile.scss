@@ -5,12 +5,21 @@
   width: 40vw;
   padding: 20px;
 
+  input, textarea {
+      &:focus {
+        outline: none;
+        background-color: #271d38;
+        transition: 0.5s;
+      }
+  }
+
   > textarea {
     margin: 10px;
-    background-color: #271d38;
+    background-color: #1d162a;
     border: none;
     resize: none;
     color: rgba(198, 168, 255, 0.63);
+    transition: 0.5s;
 
   }
 

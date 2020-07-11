@@ -36,7 +36,7 @@ function Profile(props: ProfileProps) {
                     {/*user information*/}
                     <div className="user-info-container">
                         <button className="edit-profile-button" onClick={handleClick}>Edit Profile</button>
-                            {isClicked ? (<EditProfile/>) : (<ProfileInfo user={props.user}/>)}
+                            {isClicked ? (<EditProfile user={props.user}/>) : (<ProfileInfo user={props.user}/>)}
                     </div>
                 </div>
 
