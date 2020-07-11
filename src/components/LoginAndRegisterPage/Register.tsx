@@ -10,6 +10,7 @@ import background from "./register-thumbnail-pic.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import {makeRequestToTheServer} from "../utils";
 
 function Copyright() {
     return (
@@ -89,7 +90,7 @@ function Register() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const response = await axios.post("http://localhost:3001/api/users/register", {
+        const response = await makeRequestToTheServer('GET', 'http://localhost:3001/api/users/register', {
             username: currentState.username,
             password: currentState.password
         });

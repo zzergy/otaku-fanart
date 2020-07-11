@@ -57,15 +57,28 @@ const userController = {
                 });
                 return;
             }
+            user = user.toObject();
 
             //deletes the password so that it doesn't go to the frontend
             delete user.password;
 
-            response.status(200).send({
-                login: true,
-                user
+            request.login(user, () => {
+                response.status(200).send({
+                    login: true,
+                    user
+                });
             });
+
         })(request, response);
+    },
+    auth: function (request, response) {
+        return response.status(200).send({user: request.user});
+    },
+    logout: function (request, response) {
+        request.session.destroy();
+        request.logout();
+        response.clearCookie('connect.sid');
+        return response.status(200).send({});
     }
 };
 

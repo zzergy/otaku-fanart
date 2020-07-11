@@ -9,10 +9,10 @@ import {makeStyles} from '@material-ui/core/styles';
 import background from "./register-thumbnail-pic.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
 import HomePage from "../HomePage/HomePage";
 import {UserInterface} from "../UserInterface";
 import { useHistory } from "react-router-dom";
+import {makeRequestToTheServer} from "../utils";
 
 function Copyright() {
     return (
@@ -83,12 +83,12 @@ export function Login(props: LoginProps) {
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        axios.post<LoginResponse>("http://localhost:3001/api/users/login", {
+        makeRequestToTheServer('POST', 'http://localhost:3001/api/users/login', {
             username: currentState.username,
             password: currentState.password
         }).then(//if everything is oke
              (response) => {
-                props.onLogin(response.data);
+                props.onLogin(response);
 
                 setState(
                     {

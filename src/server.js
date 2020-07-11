@@ -6,7 +6,7 @@ const mongodbUrl = "mongodb://localhost/otakufanart";
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-require('./api/authorization');
+const mongoStore = require('connect-mongo')(session);
 
 mongoose.connect(mongodbUrl, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -18,18 +18,33 @@ db.once('open', () => {
     console.log('Successfully connected to mongodb');
 });
 
-app.use(cors());
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(cors(
+    {
+        exposedHeaders: ['Set-Cookie', 'set-cookie'],
+        origin: [
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:3001",
+            "http://localhost",
+            "http://127.0.0.1",
+        ],
+        credentials: true,
+    }
+));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(session({secret: 'rHW5%Dze4.$`TJKZ'}));
+app.use(session({
+    secret: 'rHW5%Dze4.$`TJKZ',
+    store: new mongoStore({ mongooseConnection: db }),
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+require('./api/authorization')(passport);
+
 app.use('/api/', require('./api/routes'));
 app.listen(3001);

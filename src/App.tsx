@@ -27,9 +27,9 @@ function App() {
     };
 
     useEffect(() => {
-        makeRequestToTheServer('GET', 'http://localhost:3001/api/users/auth').then((response) => {
-            setState({user: response.user});
-        });
+            makeRequestToTheServer('GET', 'http://localhost:3001/api/users/auth').then((response) => {
+                setState({user: response.user});
+            });
     }, []);
 
     return (
