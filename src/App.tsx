@@ -51,7 +51,7 @@ function App() {
                     </button>
                 </Route>
                 <Route path="/profile">
-                    <Profile user={currentState.user}/>
+                    {currentState.user ? (<Profile user={currentState.user}/>) : (<Redirect to="/register"/>)}
                 </Route>
             </Switch>
         </BrowserRouter>
