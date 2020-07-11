@@ -7,8 +7,15 @@ import NewPost from "./NewPost/NewPost";
 import userPicture from "./user-picture.png";
 import EditProfile from "./EditProfile/EditProfile";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import {LoginResponse} from "../LoginAndRegisterPage/Login";
+import {UserInterface} from "../UserInterface";
+import userIcon from "../NavigationBar/navigation-bar-images/user-icon.png";
 
-function Profile() {
+interface ProfileProps {
+    user: UserInterface | null
+}
+
+function Profile(props: ProfileProps) {
     const [isClicked, setState] = useState(false);
 
     function handleClick() {
@@ -24,12 +31,12 @@ function Profile() {
 
                 <div className="profile-info-container">
                     {/*user picture*/}
-                    <img src={userPicture} alt="user" width="200" height="200"/>
+                    <img src={props.user ? props.user.imageUrl : userIcon} alt="user" width="200" height="200"/>
 
                     {/*user information*/}
                     <div className="user-info-container">
                         <button className="edit-profile-button" onClick={handleClick}>Edit Profile</button>
-                            {isClicked ? (<EditProfile/>) : (<ProfileInfo/>)}
+                            {isClicked ? (<EditProfile/>) : (<ProfileInfo user={props.user}/>)}
                     </div>
                 </div>
 
