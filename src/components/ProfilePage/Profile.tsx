@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./Profile.scss";
 import Footer from "../Footer/Footer";
-import Gallery from "../HomePage/main/Gallery/Gallery";
+import Gallery from "../HomePage/Gallery/Gallery";
 import {Link, Route, Switch} from "react-router-dom";
 import NewPost from "./NewPost/NewPost";
 import EditProfile from "./EditProfile/EditProfile";

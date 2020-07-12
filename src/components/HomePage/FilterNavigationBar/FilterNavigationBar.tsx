@@ -6,7 +6,6 @@ function FilterNavigationBar () {
             <nav>
                 <a>Recent</a>
                 <a>Popular</a>
-                <a>Filter by</a>
             </nav>
         );
 }
