@@ -4,7 +4,7 @@ import './App.css';
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import HomePage from "./components/HomePage/HomePage";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import BrowseImagesPage from "./components/BrowseImagesPage/BrowseImagesPage";
+import ViewPost from "./components/ViewPost/ViewPost";
 import Profile from "./components/ProfilePage/Profile";
 import Register from "./components/LoginAndRegisterPage/Register";
 import {Login, LoginResponse} from "./components/LoginAndRegisterPage/Login";
@@ -55,7 +55,9 @@ function App() {
             <NavigationBar user={currentState.user} clearUser={clearUser}/>
             <Switch>
                 <Route exact path="/" component={HomePage}/>
-                <Route path="/about" component={BrowseImagesPage}/>
+                <Route path="/about"/>
+                <Route path="/post/:id" component={ViewPost}/>
+
                 <Route path="/register" component={Register}/>
                 <Route path="/login">
                     {currentState.user ? (<Redirect to="/"/>) : (<Login onLogin={onLogin}/>)}

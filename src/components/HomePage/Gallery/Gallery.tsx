@@ -19,123 +19,123 @@ class Gallery extends React.Component<any, any> {
             <div className="gallery-container">
                 <div className="column">
                     <GalleryItem
-                        id={1}
+                        id="5f0b1d8ee59efd38041e21eb"
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
                     />
                     <GalleryItem
-                        id={1}
+                        id="2"
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
                     />
                 </div>
                 <div className="column">
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image1}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
                     />
                 </div>
                 <div className="column">
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
                     />
                 </div>
                 <div className="column">
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image1}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
                     />
                     <GalleryItem
-                        id={1}
+                        id={"1"}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
                     />

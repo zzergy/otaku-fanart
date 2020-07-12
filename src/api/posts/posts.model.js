@@ -9,7 +9,7 @@ const PostsSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    authorId: {
+    authorName: {
         type: String
     },
     keywords: [
@@ -19,18 +19,16 @@ const PostsSchema = mongoose.Schema({
     ],
     comments: [
         {
-            authorId: String,
-            comment: String
+            imageUrl: String,
+            username: String,
+            comment: String,
         }
     ],
-    likedBy: [
-        {
-            userId: String
-        }
-    ]
-
+    likeCount: {
+        type: Number,
+        default: 0
+    }
 });
-
 
 const postsModel = mongoose.model("posts", PostsSchema);
 module.exports = postsModel;

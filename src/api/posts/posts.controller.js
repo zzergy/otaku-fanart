@@ -41,7 +41,7 @@ const postController = {
         }
 
         //The author id in db goes to the author id in the post data
-        postData.authorId = request.user._id;
+        postData.authorName = request.user.username;
 
         //Create Post
         PostModel.create(postData, (error, post)=> {
@@ -59,6 +59,20 @@ const postController = {
             request.user.posts.push({postId: post._id});
             request.user.save();
         });
+    },
+    getPost: function (request, response) {
+        PostModel.findById(request.params.id, (error, post)=> {
+            if (error) {
+                response.status(400).send({
+                    error: `Can't find post: ${error}`
+                });
+                return;
+            }
+
+            response.status(200).send({
+                post: post.toObject()
+            })
+        })
     }
 };
 
