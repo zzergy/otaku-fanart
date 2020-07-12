@@ -79,6 +79,36 @@ const userController = {
         request.logout();
         response.clearCookie('connect.sid');
         return response.status(200).send({});
+    },
+    editUserInfo: function (request, response) {
+        const editedUserData = request.body;
+
+        //---------- MOTTO VALIDATIONS ----------
+        if (editedUserData.motto.length > 24) {
+            response.status(400).send({
+                error: 'Motto must be under 24 symbols'
+            });
+        }
+
+        request.user.motto = editedUserData.motto;
+        request.user.bio = editedUserData.bio;
+        request.user.save(
+            //this function will be called only if the new User data is saved successfully
+            (error, updatedUser) => {
+                if(error) {
+                    response.status(400).send({
+                        error: `нз оправяй сe => ${error}`
+                    });
+                    return;
+                }
+
+                response.status(200).send({
+                    // updatedUser: request.user,
+                    updatedUser: updatedUser.toObject(),
+                });
+            }
+        );
+
     }
 };
 

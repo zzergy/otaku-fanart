@@ -4,24 +4,28 @@ import Footer from "../Footer/Footer";
 import Gallery from "../HomePage/main/Gallery/Gallery";
 import {Link, Route, Switch} from "react-router-dom";
 import NewPost from "./NewPost/NewPost";
-import userPicture from "./user-picture.png";
 import EditProfile from "./EditProfile/EditProfile";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import {LoginResponse} from "../LoginAndRegisterPage/Login";
 import {UserInterface} from "../UserInterface";
 import userIcon from "../NavigationBar/navigation-bar-images/user-icon.png";
 
+
+
 interface ProfileProps {
     user: UserInterface | null
+    updateUser: (motto: string, bio: string) => void
 }
 
 function Profile(props: ProfileProps) {
-    const [isClicked, setState] = useState(false);
+    const [isEditingProfile, setState] = useState(false);
+
+    function stopEditing () {
+        setState(false);
+    }
 
     function handleClick() {
         setState(true);
     }
-
 
     return (
         <div>
@@ -31,12 +35,14 @@ function Profile(props: ProfileProps) {
 
                 <div className="profile-info-container">
                     {/*user picture*/}
-                    <img src={props.user ? props.user.imageUrl : userIcon} alt="user" width="200" height="200"/>
+                    <img src={props.user?.imageUrl ? props.user.imageUrl : userIcon} alt="user" width="200"
+                         height="200"/>
 
                     {/*user information*/}
                     <div className="user-info-container">
                         <button className="edit-profile-button" onClick={handleClick}>Edit Profile</button>
-                        {isClicked ? (<EditProfile user={props.user}/>) : (<ProfileInfo user={props.user}/>)}
+                        {isEditingProfile ? (<EditProfile user={props.user} updateUser={props.updateUser} stopEditing={stopEditing}/>) : (
+                            <ProfileInfo user={props.user}/>)}
                     </div>
                 </div>
 

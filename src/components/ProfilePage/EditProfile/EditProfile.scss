@@ -39,7 +39,7 @@
     transition: 0.5s;
   }
 
-  .save-button {
+  .edit-profile-buttons {
     align-self: center;
     font-size: 14px;
     color: rgba(198, 168, 255, 0.63);
@@ -52,10 +52,15 @@
     transition-duration: 0.6s;
   }
 
-  .save-button:hover {
+  .edit-profile-buttons:hover {
     color: whitesmoke;
     background-color: #6135BF;
     transition-duration: 0.5s;
     cursor: pointer;
+  }
+
+  .buttons-container {
+      display: flex;
+  justify-content: space-evenly;
   }
 }

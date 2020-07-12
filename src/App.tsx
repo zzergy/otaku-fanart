@@ -21,6 +21,8 @@ function App() {
         user: null,
     });
 
+
+
     const onLogin = (response: LoginResponse) => {
         setState({user: response.user});
     };
@@ -35,6 +37,19 @@ function App() {
         setState({user: null});
     }
 
+    function updateUser(motto: string, bio: string) {
+        const newState = {
+            ...currentState
+        };
+
+        if(currentState.user !== null) {
+            currentState.user.motto = motto;
+            currentState.user.bio = bio;
+        }
+
+        setState(newState);
+    }
+
     return (
         <BrowserRouter>
             <NavigationBar user={currentState.user} clearUser={clearUser}/>
@@ -46,7 +61,7 @@ function App() {
                     {currentState.user ? (<Redirect to="/"/>) : (<Login onLogin={onLogin}/>)}
                 </Route>
                 <Route path="/profile">
-                    {currentState.user ? (<Profile user={currentState.user}/>) : (<Redirect to="/register"/>)}
+                    {currentState.user ? (<Profile user={currentState.user} updateUser={updateUser}/>) : (<Redirect to="/register"/>)}
                 </Route>
             </Switch>
         </BrowserRouter>
