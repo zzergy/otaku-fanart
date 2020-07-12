@@ -5,28 +5,21 @@ interface GalleryItemProps {
     id: number;
     imageUrl: string;
     imageTitle: string;
-
-    /*when liked it will change the state of the isliked to true and change the background
-    image to a full heart*/
-    onLike(): void;
 }
 
-interface GalleryItemState {
-    isLiked: false;
-}
-
-class GalleryItem extends React.Component <GalleryItemProps, GalleryItemState> {
-    render() {
+function GalleryItem(props: GalleryItemProps) {
         return (
             <section>
-                <img src={this.props.imageUrl} alt="fanArt"/>
+                <img src={props.imageUrl} alt="fanArt"/>
                 <div className="image-info-container">
-                    <p>{this.props.imageTitle}</p>
-                    <button className="like-button"/>
+                    <div className="title-container">{props.imageTitle}</div>
+                    <div className="likes-container">
+                        <img className="like-icon" src={"./icons/heart-full.png"} alt='post image'/>
+                        <p>20</p>
+                    </div>
                 </div>
             </section>
         );
-    }
 }
 
 export default GalleryItem

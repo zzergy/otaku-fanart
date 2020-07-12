@@ -13,6 +13,7 @@ import "./Gallery.scss";
 import GalleryItem from "./GalleryItem/GalleryItem";
 
 class Gallery extends React.Component<any, any> {
+
     render() {
         return (
             <div className="gallery-container">
@@ -21,31 +22,26 @@ class Gallery extends React.Component<any, any> {
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
-                        onLike={() => {}}
                     />
                 </div>
                 <div className="column">
@@ -53,37 +49,31 @@ class Gallery extends React.Component<any, any> {
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image1}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
-                        onLike={() => {}}
                     />
                 </div>
                 <div className="column">
@@ -91,37 +81,31 @@ class Gallery extends React.Component<any, any> {
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image7}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
-                        onLike={() => {}}
                     />
                 </div>
                 <div className="column">
@@ -129,37 +113,31 @@ class Gallery extends React.Component<any, any> {
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image2}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image4}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image6}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image1}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image3}
-                        onLike={() => {}}
                     />
                     <GalleryItem
                         id={1}
                         imageTitle={"Fancy image that i made and the title is too long"}
                         imageUrl={image5}
-                        onLike={() => {}}
                     />
                 </div>
             </div>
