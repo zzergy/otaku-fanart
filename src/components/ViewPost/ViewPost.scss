@@ -37,16 +37,29 @@
   box-shadow: 0px 0px 28px 5px rgba(97, 53, 191, 0.25);
   border-radius: 10px;
 
-  .likeAndComment-container {
+  //there is no error here it's from the image url path
+  .comment-and-like-container {
     height: 50px;
-    //border: solid 1px crimson;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    > a {
+    //like and comment layout
+    .like-and-comment-layout {
+      display: flex;
+      align-items: center;
       color: #6135BF;
-      font-weight: bold;
+      height: 40px;
+    }
+
+    .like-button {
+      background-image: url("/icons/heart-empty.png");
+      margin-right: 5px;
+    }
+
+    .comment-button {
+      background-image: url("/icons/comment-full.png");
+      margin-right: 5px;
     }
 
     .button-size {
@@ -58,16 +71,7 @@
       height: 40px;
     }
 
-    .like-button {
-      background-image: url("/icons/heart-empty.png");
-    }
-
-    .comment-button {
-      background-image: url("/icons/comment-full.png");
-    }
   }
-
-
 }
 
 .info-container {
@@ -76,43 +80,126 @@
   margin-top: 40px;
   width: 80%;
 
-  > p {
-    word-spacing: 10px;
+  h2, h3 {
+    font-weight: lighter;
   }
 
-
+  .keywords-container {
+    font-size: 17px;
+    font-weight: lighter;
+    padding: 5px 5px 5px 0;
+  }
 }
 
-.comments-container {
-  //border: solid 1px red;
+.main-comments-container {
+  display: flex;
+  flex-direction: column;
   width: 80%;
-  height: 500px;
+  margin-top: 20px;
 
-  > h2 {
-    color: #e0e0e0;
-  }
+  //new comment form
+  .new-comment-form {
+    //border: solid 1px red;
+    margin-bottom: 20px;
+    margin-top: 10px;
 
-  .new-comment {
-    display: flex;
-    align-items: center;
-
-    > img {
-      width: 50px;
-      height: 50px;
-      margin-right: 15px;
+    > h2 {
+      color: #e0e0e0;
     }
 
-    > .comment {
-      width: 50%;
-      height: 100px;
-      border: none;
-      resize: none;
-      background-color: #252c46;
-      color: whitesmoke;
-      font-size: larger;
-      padding: 10px;
-      font-family: 'Roboto Condensed', sans-serif;
+    .new-comment {
+      display: flex;
+
+      > div {
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+
+        > .new-comment-text {
+          //width: 50%;
+          height: 100px;
+          border: none;
+          resize: none;
+          color: whitesmoke;
+          font-size: larger;
+          padding: 10px;
+          font-family: 'Roboto Condensed', sans-serif;
+          border-radius: 5px;
+          background-color: #1d162a;
+          transition-duration: 0.5s;
+          color: rgba(198, 168, 255, 0.63);
+
+          &:focus {
+            transition-duration: 0.5s;
+            background-color: #271d38;
+            outline: none;
+          }
+        }
+
+        .post-comment-button {
+          align-self: flex-end;
+          font-size: 14px;
+          color: rgba(198, 168, 255, 0.63);
+          background-color: transparent;
+          border: 1px solid #6135BF;
+          border-radius: 3px;
+          width: 120px;
+          height: 35px;
+          margin-top: 15px;
+          transition-duration: 0.6s;
+
+          &:hover {
+            color: whitesmoke;
+            background-color: #6135BF;
+            transition-duration: 0.5s;
+            cursor: pointer;
+          }
+        }
+      }
+
+      > .avatar-icon {
+        width: 55px;
+        height: 55px;
+        margin-right: 15px;
+        border-radius: 100%;
+      }
     }
   }
 
+  //comment section
+  .comments-container {
+    //border: solid 1px red;
+    margin: 20px 0;
+
+    > h2 {
+      color: #e0e0e0;
+    }
+
+    .comment-wrapper {
+      display: flex;
+      align-items: center;
+
+      > img {
+        width: 55px;
+        height: 55px;
+        margin-right: 15px;
+        border-radius: 100%;
+      }
+
+      > .comment-text {
+        width: auto;
+        height: auto;
+        border: none;
+        resize: none;
+        font-size: 17px;
+        padding: 10px;
+        font-family: 'Roboto Condensed', sans-serif;
+        border-radius: 5px;
+        background-color: #2c2240;
+        color: rgba(198, 168, 255, 0.94);
+      }
+    }
+  }
 }
+
+

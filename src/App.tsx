@@ -56,8 +56,9 @@ function App() {
             <Switch>
                 <Route exact path="/" component={HomePage}/>
                 <Route path="/about"/>
-                <Route path="/post/:id" component={ViewPost}/>
-
+                <Route path="/post/:id">
+                    <ViewPost avatarUrl={currentState.user?.imageUrl}/>
+                </Route>
                 <Route path="/register" component={Register}/>
                 <Route path="/login">
                     {currentState.user ? (<Redirect to="/"/>) : (<Login onLogin={onLogin}/>)}
