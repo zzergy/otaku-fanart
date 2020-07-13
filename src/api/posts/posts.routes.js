@@ -6,5 +6,6 @@ const controller = require('./posts.controller');
 
 router.post('/', controller.newPost);
 router.get('/:id', controller.getPost);
+router.post('/:id/comment', controller.createComment);
 
 module.exports = router;
