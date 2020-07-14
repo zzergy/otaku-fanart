@@ -90,7 +90,7 @@ function Register() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const response = await makeRequestToTheServer('GET', 'http://localhost:3001/api/users/register', {
+        const response = await makeRequestToTheServer('POST', 'http://localhost:3001/api/users/register', {
             username: currentState.username,
             password: currentState.password
         });

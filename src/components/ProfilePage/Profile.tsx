@@ -10,7 +10,6 @@ import {UserInterface} from "../UserInterface";
 import userIcon from "../NavigationBar/navigation-bar-images/user-icon.png";
 
 
-
 interface ProfileProps {
     user: UserInterface | null
     updateUser: (motto: string, bio: string) => void
@@ -75,7 +74,7 @@ function Posts() {
         // @ts-ignore
         <div style={styles}>
             <h1>Your Posts</h1>
-            <Gallery/>
+            <Gallery yourPosts={true}/>
         </div>
     );
 }
@@ -85,7 +84,7 @@ function LikedPosts() {
         // @ts-ignore
         <div style={styles}>
             <h2>Liked Posts</h2>
-            <Gallery/>
+            <Gallery likedPosts={true}/>
         </div>
     );
 }

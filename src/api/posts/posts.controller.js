@@ -61,7 +61,7 @@ const postController = {
         });
     },
     getPost: function (request, response) {
-        PostModel.findById(request.params.id, (error, post) => {
+        PostModel.findById(request.params.id.toString(), (error, post) => {
             if (error) {
                 response.status(400).send({
                     error: `Can't find post: ${error}`
@@ -72,6 +72,36 @@ const postController = {
             response.status(200).send({
                 post: post.toObject()
             })
+        })
+    },
+    getAllPosts: function (request, response) {
+        const query = request.query;
+        let criteria = {};
+
+        if (query.yourPosts === "true") {
+            criteria = {
+                'authorName': request.user.username
+            };
+        }
+
+        if (query.likedPosts === "true") {
+            criteria = {
+                '_id': {
+                    '$in': request.user.likedPosts.map(post => post.postId)
+                }
+            };
+        }
+
+        PostModel.find(criteria, {imageUrl: true, title: true, likeCount: true}, function (error, posts) {
+            if (error) {
+                response.status(400).send({
+                    error: `Cannot load posts => ${error}`
+                })
+            }
+
+            response.send({
+                allPosts: posts.map(post => post.toObject())
+            });
         })
     },
     createComment: function (request, response) {

@@ -7,5 +7,5 @@ const controller = require('./posts.controller');
 router.post('/', controller.newPost);
 router.get('/:id', controller.getPost);
 router.post('/:id/comment', controller.createComment);
-
+router.get('/', controller.getAllPosts);
 module.exports = router;

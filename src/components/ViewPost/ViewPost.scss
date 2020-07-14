@@ -37,6 +37,10 @@
   box-shadow: 0px 0px 28px 5px rgba(97, 53, 191, 0.25);
   border-radius: 10px;
 
+  .full-image {
+    max-width: 80vw;
+  }
+
   //there is no error here it's from the image url path
   .comment-and-like-container {
     height: 50px;

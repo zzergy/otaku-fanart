@@ -4,7 +4,6 @@ import Footer from "../Footer/Footer";
 import {Link, useParams} from "react-router-dom";
 import {makeRequestToTheServer} from "../utils";
 import userIcon from "../NavigationBar/navigation-bar-images/user-icon.png";
-import {UserInterface} from "../UserInterface";
 
 interface ViewPostParams {
     id: string
@@ -22,6 +21,7 @@ interface UseStateInterface {
 
 interface ViewPostProps {
     avatarUrl: string | undefined;
+    username: string | undefined;
 }
 
 function ViewPost(props: ViewPostProps) {
@@ -132,7 +132,7 @@ function ViewPost(props: ViewPostProps) {
                         <div className="comments-container">
                             <div className="comment-wrapper">
                                 {/*user image*/}
-                                <img src={item.imageUrl || userIcon} alt="user icon"/>
+                                <img src={item.imageUrl || userIcon} alt={props.username}/>
                                 {/*comment field*/}
                                 <div className="comment-text">{item.comment}</div>
                             </div>

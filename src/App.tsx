@@ -57,7 +57,7 @@ function App() {
                 <Route exact path="/" component={HomePage}/>
                 <Route path="/about"/>
                 <Route path="/post/:id">
-                    <ViewPost avatarUrl={currentState.user?.imageUrl}/>
+                    <ViewPost avatarUrl={currentState.user?.imageUrl} username={currentState.user?.username}/>
                 </Route>
                 <Route path="/register" component={Register}/>
                 <Route path="/login">

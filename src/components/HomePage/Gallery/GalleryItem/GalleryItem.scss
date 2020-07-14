@@ -17,14 +17,15 @@
   opacity: 0;
   transition-duration: 0.5s;
   position: relative;
-  margin-top: -100px;
+  margin-top: -70px;
   transform: translateY(100%);
+
+  justify-content: space-evenly;
 
   .likes-container {
     display: flex;
     //width: 100px;
     align-items: center;
-    margin-left: 15px;
     .like-icon {
       width: 25px;
       height: 25px;
@@ -37,7 +38,6 @@
 
   .title-container {
     width: 220px;
-    margin-left: 25px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;

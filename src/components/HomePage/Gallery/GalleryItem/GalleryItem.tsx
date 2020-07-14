@@ -7,6 +7,7 @@ interface GalleryItemProps {
     id: string;
     imageUrl: string;
     imageTitle: string;
+    likeCount: number;
 }
 
 function GalleryItem(props: GalleryItemProps) {
@@ -21,11 +22,13 @@ function GalleryItem(props: GalleryItemProps) {
     return (
         <section onClick={handleClick}>
             <img src={props.imageUrl} alt="fanArt"/>
-            <div className="image-info-container">
-                <div className="title-container">{props.imageTitle}</div>
-                <div className="likes-container">
-                    <img className="like-icon" src={"./icons/heart-full.png"} alt='post image'/>
-                    <p>20</p>
+            <div style={{height: '70px'}}>
+                <div className="image-info-container">
+                    <div className="title-container">{props.imageTitle}</div>
+                    <div className="likes-container">
+                        <img className="like-icon" src={"/icons/heart-full.png"} alt='post image'/>
+                        <p>{props.likeCount}</p>
+                    </div>
                 </div>
             </div>
         </section>
