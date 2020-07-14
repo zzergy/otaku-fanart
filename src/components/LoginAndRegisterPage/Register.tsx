@@ -9,8 +9,9 @@ import {makeStyles} from '@material-ui/core/styles';
 import background from "./register-thumbnail-pic.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
+import Slide from '@material-ui/core/Slide';
 import {makeRequestToTheServer} from "../utils";
+import {Snackbar} from "@material-ui/core";
 
 function Copyright() {
     return (
@@ -62,6 +63,7 @@ function Register() {
             password: "",
             confirmPassword: "",
             passwordErrorMessage: "",
+            registerError: ""
         }
     );
 
@@ -94,96 +96,119 @@ function Register() {
             username: currentState.username,
             password: currentState.password
         });
+
+        setState({...currentState, registerError: response.error});
         console.log(response);
+    }
+
+    function handleClose(event: React.SyntheticEvent | React.MouseEvent, reason?: string) {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setState({...currentState, registerError: ''});
     }
 
 
     //----------------------------------- RENDER -----------------------------------
     return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline/>
+        <div>
+            <Grid container component="main" className={classes.root}>
+                <CssBaseline/>
 
-            {/*image container*/}
-            <Grid item xs={false} sm={4} md={7} className={classes.image}/>
+                {/*image container*/}
+                <Grid item xs={false} sm={4} md={7} className={classes.image}/>
 
-            {/*form*/}
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    {/*register form*/}
-                    <form className={classes.form} noValidate onSubmit={handleSubmit}>
-                        <Typography component="h1" variant="h5">Sign Up</Typography>
+                {/*form*/}
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <div className={classes.paper}>
+                        {/*register form*/}
+                        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                            <Typography component="h1" variant="h5">Sign Up</Typography>
 
-                        {/*Username*/}
-                        <TextField className={classes.textField}
-                                   id="username"
-                                   variant="outlined"
-                                   margin="normal"
-                                   required
-                                   fullWidth
-                                   label="Username"
-                                   name="username"
-                                   autoComplete="username"
-                                   onChange={handleChange}
-                        />
+                            {/*Username*/}
+                            <TextField className={classes.textField}
+                                       id="username"
+                                       variant="outlined"
+                                       margin="normal"
+                                       required
+                                       fullWidth
+                                       label="Username"
+                                       name="username"
+                                       autoComplete="username"
+                                       onChange={handleChange}
+                            />
 
-                        {/*Password*/}
-                        <TextField
-                            id="password"
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            onChange={handleChange}
-                            //!! makes the string to a boolean
-                            error={!!currentState.passwordErrorMessage}
-                            helperText={currentState.passwordErrorMessage}
-                        />
+                            {/*Password*/}
+                            <TextField
+                                id="password"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                onChange={handleChange}
+                                //!! makes the string to a boolean
+                                error={!!currentState.passwordErrorMessage}
+                                helperText={currentState.passwordErrorMessage}
+                            />
 
-                        {/*Confirm Password*/}
-                        <TextField
-                            id="confirmPassword"
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="confirmPassword"
-                            label="Confirm Password"
-                            type="password"
-                            onChange={handleChange}
-                            //!! makes the string to a boolean
-                            error={!!currentState.passwordErrorMessage}
-                            helperText={currentState.passwordErrorMessage}
-                        />
+                            {/*Confirm Password*/}
+                            <TextField
+                                id="confirmPassword"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                type="password"
+                                onChange={handleChange}
+                                //!! makes the string to a boolean
+                                error={!!currentState.passwordErrorMessage}
+                                helperText={currentState.passwordErrorMessage}
+                            />
 
-                        {/*Submit*/}
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="secondary"
-                            className={classes.submit}
-                        >
-                            Sign Up
-                        </Button>
+                            {/*Submit*/}
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="secondary"
+                                className={classes.submit}
+                            >
+                                Sign Up
+                            </Button>
 
-                        {/*Login Link*/}
-                        <Grid container>
-                            <Grid item>
-                                <Link to="/login">Already have an account? Log In</Link>
+                            {/*Login Link*/}
+                            <Grid container>
+                                <Grid item>
+                                    <Link to="/login">Already have an account? Log In</Link>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
-                <Box mt={5}>
-                    <Copyright/>
-                </Box>
+                    <Box mt={5}>
+                        <Copyright/>
+                    </Box>
+                </Grid>
             </Grid>
-        </Grid>
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+                open={!!currentState.registerError}
+                onClose={handleClose}
+                autoHideDuration={2500}
+                message={currentState.registerError}
+                TransitionComponent={Slide}
+            />
+        </div>
     );
 }
 

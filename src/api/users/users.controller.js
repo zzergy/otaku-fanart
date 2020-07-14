@@ -53,7 +53,7 @@ const userController = {
             if (!user) {
                 response.status(400).send({
                     login: false,
-                    error: `Can't login ${error}`
+                    error: `Can't login`
                 });
                 return;
             }

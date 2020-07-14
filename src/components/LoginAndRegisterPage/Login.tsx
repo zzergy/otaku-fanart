@@ -12,6 +12,8 @@ import Button from "@material-ui/core/Button";
 import {UserInterface} from "../UserInterface";
 import { useHistory } from "react-router-dom";
 import {makeRequestToTheServer} from "../utils";
+import {Snackbar} from "@material-ui/core";
+import Slide from "@material-ui/core/Slide";
 
 function Copyright() {
     return (
@@ -79,6 +81,14 @@ export function Login(props: LoginProps) {
         setState(newState)
     }
 
+    function handleClose(event: React.SyntheticEvent | React.MouseEvent, reason?: string) {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setState({...currentState, errorMessage: ''});
+    }
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
@@ -87,6 +97,16 @@ export function Login(props: LoginProps) {
             password: currentState.password
         }).then(//if everything is oke
              (response) => {
+                 if (response.error) {
+                     setState(
+                         {
+                             ...currentState,
+                             errorMessage: response.error
+                         }
+                     );
+                     return;
+                 }
+
                 props.onLogin(response);
 
                 setState(
@@ -110,73 +130,86 @@ export function Login(props: LoginProps) {
     }
 
     return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline/>
+        <div>
+            <Grid container component="main" className={classes.root}>
+                <CssBaseline/>
 
-            {/*image container*/}
-            <Grid item xs={false} sm={4} md={7} className={classes.image}/>
+                {/*image container*/}
+                <Grid item xs={false} sm={4} md={7} className={classes.image}/>
 
-            {/*form*/}
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    {/*Login form*/}
-                    <form className={classes.form} noValidate onSubmit={handleSubmit}>
-                        <Typography component="h1" variant="h5">Log In</Typography>
+                {/*form*/}
+                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                    <div className={classes.paper}>
+                        {/*Login form*/}
+                        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                            <Typography component="h1" variant="h5">Log In</Typography>
 
-                        {/*Username*/}
-                        <TextField
-                            id="username"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            label="Username"
-                            name="username"
-                            autoComplete="username"
-                            onChange={handleChange}
-                            error={!!currentState.errorMessage}
-                            helperText={currentState.errorMessage}
-                        />
+                            {/*Username*/}
+                            <TextField
+                                id="username"
+                                variant="outlined"
+                                margin="normal"
+                                fullWidth
+                                label="Username"
+                                name="username"
+                                autoComplete="username"
+                                onChange={handleChange}
+                                error={!!currentState.errorMessage}
+                                helperText={currentState.errorMessage}
+                            />
 
-                        {/*Password*/}
-                        <TextField
-                            id="password"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            onChange={handleChange}
-                            error={!!currentState.errorMessage}
-                            helperText={currentState.errorMessage}
-                        />
+                            {/*Password*/}
+                            <TextField
+                                id="password"
+                                variant="outlined"
+                                margin="normal"
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                onChange={handleChange}
+                                error={!!currentState.errorMessage}
+                                helperText={currentState.errorMessage}
+                            />
 
-                        {/*Login*/}
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="secondary"
-                            className={classes.submit}
-                        >
-                            Log In
-                        </Button>
+                            {/*Login*/}
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="secondary"
+                                className={classes.submit}
+                            >
+                                Log In
+                            </Button>
 
-                        {/*Login Link*/}
-                        <Grid container>
-                            <Grid item>
-                                <Link to="/register">Don't have an account? Register here.</Link>
+                            {/*Login Link*/}
+                            <Grid container>
+                                <Grid item>
+                                    <Link to="/register">Don't have an account? Register here.</Link>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
-                <Box mt={5}>
-                    <Copyright/>
-                </Box>
-            </Grid>
-        </Grid>
+                    <Box mt={5}>
+                        <Copyright/>
+                    </Box>
+                </Grid>
+            </Grid>\
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+                open={!!currentState.errorMessage}
+                onClose={handleClose}
+                autoHideDuration={2500}
+                message={currentState.errorMessage}
+                TransitionComponent={Slide}
+            />
+        </div>
     );
 }
 
