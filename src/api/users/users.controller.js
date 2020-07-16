@@ -88,6 +88,7 @@ const userController = {
             response.status(400).send({
                 error: 'Motto must be under 24 symbols'
             });
+            return;
         }
 
         request.user.motto = editedUserData.motto;
