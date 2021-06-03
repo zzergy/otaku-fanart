@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useEffect, useState} from "react";
 import "./ViewPost.scss";
-import Footer from "../Footer/Footer";
+import Footer from "./../Footer/Footer";
 import {Link, useParams} from "react-router-dom";
 import {makeRequestToTheServer} from "../utils";
-import userIcon from "../NavigationBar/navigation-bar-images/user-icon.png";
+import userIcon from "./../NavigationBar/navigation-bar-images/user-icon.png";
 
 interface ViewPostParams {
     id: string
